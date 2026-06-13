@@ -1,0 +1,30 @@
+// Design tokens — Marcus Cole Group
+// Matches design/reference.html
+
+$accent:        #c9a96e;
+$accent-rgb:    201, 169, 110;
+$brand:         #d4b87e;
+
+$bg-base:       #1a1814;
+$bg-surface:    #201c17;
+$bg-card:       #231f1a;
+
+$border:        rgba(201, 169, 110, 0.12);
+$border-strong: rgba(201, 169, 110, 0.28);
+
+$text-primary:  #faf8f3;
+$text-muted:    #a89880;
+$text-subtle:   #6b5e50;
+
+$font-display:  'Cormorant Garamond', serif;
+$font-body:     'Jost', sans-serif;
+
+$radius-sm:     6px;
+$radius:        10px;
+$radius-lg:     16px;
+
+$nav-height:    68px;
+
+$shadow-card:   0 8px 32px rgba(0, 0, 0, 0.40);
+$shadow-hero:   0 30px 80px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(201, 169, 110, 0.10);
+$shadow-btn:    0 4px 20px rgba(201, 169, 110, 0.30);

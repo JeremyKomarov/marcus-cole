@@ -1,0 +1,85 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.reviews {
+  @include section-full;
+  @include section-padding;
+  background: $bg-base;
+}
+
+.reviews__container {
+  @include container;
+}
+
+.reviews__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.reviews__headline {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 400;
+  margin-top: 12px;
+}
+
+.reviews__grid {
+  display: grid;
+  gap: 20px;
+
+  @include respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 200ms ease, transform 200ms ease;
+
+  &:hover {
+    border-color: $border-strong;
+    transform: translateY(-2px);
+  }
+}
+
+.card__stars {
+  color: $accent;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.card__quote {
+  font-family: $font-display;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: $text-primary;
+  flex: 1;
+}
+
+.card__footer {
+  padding-top: 18px;
+  border-top: 1px solid $border;
+}
+
+.card__name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card__context {
+  font-size: 12px;
+  color: $text-muted;
+  margin-top: 3px;
+  font-weight: 300;
+}

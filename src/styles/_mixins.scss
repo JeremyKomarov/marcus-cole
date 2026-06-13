@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+@mixin respond($bp) {
+  @if $bp == sm  { @media (min-width: 600px)  { @content; } }
+  @if $bp == md  { @media (min-width: 768px)  { @content; } }
+  @if $bp == lg  { @media (min-width: 900px)  { @content; } }
+  @if $bp == xl  { @media (min-width: 1140px) { @content; } }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@mixin section-full {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: $nav-height;
+}
+
+@mixin section-padding {
+  padding-top: clamp(48px, 7vh, 88px);
+  padding-bottom: clamp(48px, 7vh, 88px);
+}

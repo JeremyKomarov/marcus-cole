@@ -1,0 +1,203 @@
+{
+  "SITE": {
+    "name": "Marcus Cole Group",
+    "phone": "(512) 800-0101",
+    "phoneHref": "tel:5128000101",
+    "city": "Austin",
+    "state": "TX",
+    "address": {
+      "street": "1801 Lavaca St, Suite 204",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701"
+    },
+    "license": "TREC #654321",
+    "email": "marcus@marcuscolegroup.com"
+  },
+  "HERO": {
+    "eyebrow": "Austin Luxury Real Estate",
+    "headline": "Austin's Luxury Market,",
+    "headlineEm": "Negotiated in Your Favor.",
+    "sub": "You get direct access to me — not an assistant — from the first call through the day we close. 15 years. Every Austin neighborhood. Every price point.",
+    "ctaPrimary": "Get Your Free Home Valuation",
+    "ctaSecondary": "Call (512) 800-0101",
+    "imageBadgePrice": "$1,250,000",
+    "imageBadgeAddress": "3204 Barton Creek Blvd"
+  },
+  "STATS": [
+    { "value": "$98M+", "label": "Closed Volume" },
+    { "value": "200+", "label": "Homes Sold" },
+    { "value": "11 days", "label": "Avg. on Market" },
+    { "value": "4.9 ★", "label": "Google Rating" }
+  ],
+  "LISTINGS": [
+    {
+      "price": "$1,250,000",
+      "address": "3204 Barton Creek Blvd",
+      "cityState": "Austin, TX 78735",
+      "beds": 4,
+      "baths": "3.5",
+      "sqft": "3,840",
+      "status": "Active"
+    },
+    {
+      "price": "$975,000",
+      "address": "7811 Scenic Brook Dr",
+      "cityState": "Austin, TX 78736",
+      "beds": 5,
+      "baths": "4",
+      "sqft": "4,210",
+      "status": "Active"
+    },
+    {
+      "price": "$649,000",
+      "address": "1402 Ridgewood Rd",
+      "cityState": "Austin, TX 78702",
+      "beds": 3,
+      "baths": "2",
+      "sqft": "1,920",
+      "status": "Active"
+    }
+  ],
+  "VALUE_PROPS": {
+    "sectionLabel": "Why Marcus Cole",
+    "headline": "The difference a real Austin expert makes",
+    "copy": "I have lived and worked in this city since 2009. I know which streets flood, which school districts are shifting, and which neighborhoods are quietly becoming Austin's best-kept secrets. That knowledge is what separates a good outcome from a great one.",
+    "cta": "Schedule a Consultation",
+    "pillars": [
+      {
+        "number": "01",
+        "title": "Local Expertise",
+        "body": "Born and raised in Austin. Deep knowledge of every neighborhood, school district, and micro-market — before trends hit the headlines."
+      },
+      {
+        "number": "02",
+        "title": "Off-Market Access",
+        "body": "My network of 400+ Austin agents surfaces listings before they hit the MLS. Sellers receive discreet, pre-qualified offers without public showings."
+      },
+      {
+        "number": "03",
+        "title": "White-Glove Service",
+        "body": "From first showing to closing day, I personally handle every detail — inspections, negotiations, title, and the keys in your hand."
+      }
+    ]
+  },
+  "REVIEWS": [
+    {
+      "quote": "Marcus sold our home in 8 days for $34,000 over asking. He priced it right, staged it beautifully, and handled everything. Best agent in Austin — full stop.",
+      "name": "Sarah M.",
+      "context": "Barton Hills · Sold $34k over ask in 8 days"
+    },
+    {
+      "quote": "We were first-time buyers in the most competitive market of our lives. Marcus found us an off-market home before it listed and kept us out of a bidding war. Unreal.",
+      "name": "James & Priya T.",
+      "context": "Mueller · Off-market purchase, avoided bidding war"
+    },
+    {
+      "quote": "I've bought and sold four homes. Marcus is the most prepared, communicative agent I've ever worked with. Closed our sale in 11 days, $28k over ask.",
+      "name": "Daniel R.",
+      "context": "Westlake · $28k over ask, 11 days on market"
+    }
+  ],
+  "ABOUT": {
+    "sectionLabel": "Meet Your Agent",
+    "headline": "Marcus Cole — Austin's Luxury Market Specialist",
+    "body": "I've been buying and selling homes in Austin since 2009, through booms, corrections, and everything in between. What I've learned: every transaction is someone's biggest financial moment. I treat it that way. My clients get direct access to me — not an assistant, not a team member — from the first call through the day we close.",
+    "cta": "Book a 30-Minute Consultation",
+    "credentials": [
+      "Licensed Texas Realtor — TREC #654321",
+      "Certified Negotiation Expert (CNE)",
+      "Top 1% Producer, Austin Board of Realtors",
+      "Member, Austin Luxury Homes Network"
+    ]
+  },
+  "MARKET": {
+    "sectionLabel": "Austin Market · June 2026",
+    "headline": "Know the market before you move",
+    "sub": "Data sourced from the Austin Board of Realtors MLS. Updated monthly.",
+    "stats": [
+      { "value": "$487k", "label": "Median Sale Price", "sub": "Austin Metro, May 2026" },
+      { "value": "23 days", "label": "Avg. Days on Market", "sub": "Active listings, Travis County" },
+      { "value": "98.2%", "label": "List-to-Sale Ratio", "sub": "Closed sales, past 90 days" }
+    ]
+  },
+  "PROCESS": {
+    "sectionLabel": "The Process",
+    "headline": "From hello to closing in three steps",
+    "cta": "Get Started Today",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Your Consultation",
+        "body": "We talk through your goals, timeline, and budget in a 30-minute call. No pressure, no commitment. Just clarity on what's possible in today's Austin market."
+      },
+      {
+        "number": "02",
+        "title": "Your Strategy",
+        "body": "I build a custom pricing strategy or buyer search plan tailored to your specific neighborhood, timeline, and non-negotiables."
+      },
+      {
+        "number": "03",
+        "title": "Your Close",
+        "body": "You walk away with the best possible outcome. I handle every detail from offer negotiation to signing day — and hand you the keys."
+      }
+    ]
+  },
+  "LEAD_FORM": {
+    "sectionLabel": "Free Home Valuation",
+    "headline": "Find out what your Austin home is worth — today.",
+    "body": "I'll pull a custom comparative market analysis (CMA) based on recent sales within half a mile of your address. It takes 24 hours. It's completely free. And it comes with no obligation to list.",
+    "trustPoints": [
+      "Response within 24 hours",
+      "No commitment required",
+      "Licensed Texas Realtor — TREC #654321"
+    ],
+    "submitCta": "Request My Free Valuation",
+    "successMessage": "We'll be in touch within 24 hours. — Marcus"
+  },
+  "FAQ": {
+    "sectionLabel": "Common Questions",
+    "headline": "Everything you need to know",
+    "items": [
+      {
+        "q": "How much is my Austin home worth right now?",
+        "a": "Austin home values shift month to month based on inventory, interest rates, and neighborhood demand. I'll pull a custom comparative market analysis using recent sales within half a mile of your address — it takes 24 hours and is completely free."
+      },
+      {
+        "q": "How long does it take to sell a home in Austin?",
+        "a": "My listings sell in an average of 11 days. The biggest factor is pricing strategy — homes priced correctly consistently attract multiple offers in the first week. I'll show you exactly where your home sits in today's market."
+      },
+      {
+        "q": "Do I need a buyer's agent to purchase a home in Austin?",
+        "a": "In Texas, sellers typically cover the buyer agent commission. Working with me as your buyer's agent costs you nothing out of pocket and puts a skilled negotiator in your corner on the largest purchase of your life."
+      },
+      {
+        "q": "What neighborhoods do you work in?",
+        "a": "I cover all of Austin — Barton Hills, Westlake, Mueller, Hyde Park, Tarrytown, Circle C Ranch, South Congress, and East Austin. I also serve surrounding suburbs including Cedar Park, Round Rock, Pflugerville, and Dripping Springs."
+      },
+      {
+        "q": "What's the difference between listing with you vs. a large team or brokerage?",
+        "a": "With a large team, you often meet the listing agent once and then hand off to an assistant. With me, you get me — personally — for every call, showing, negotiation, and issue that comes up."
+      }
+    ]
+  },
+  "FOOTER": {
+    "serviceLinks": [
+      { "label": "Current Listings", "href": "#listings" },
+      { "label": "Buyer Representation", "href": "#value-props" },
+      { "label": "Seller Representation", "href": "#value-props" },
+      { "label": "Off-Market Access", "href": "#value-props" }
+    ],
+    "pageLinks": [
+      { "label": "About Marcus", "href": "#about" },
+      { "label": "Client Reviews", "href": "#reviews" },
+      { "label": "Market Stats", "href": "#market" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "socialLinks": [
+      { "label": "Instagram", "href": "https://instagram.com" },
+      { "label": "LinkedIn", "href": "https://linkedin.com" },
+      { "label": "Google Maps", "href": "https://maps.google.com" }
+    ]
+  }
+}

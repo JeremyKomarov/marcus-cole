@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.process {
+  @include section-full;
+  @include section-padding;
+  background: $bg-surface;
+}
+
+.process__container {
+  @include container;
+}
+
+.process__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.process__headline {
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 400;
+  margin-top: 12px;
+}
+
+// Connected horizontal grid — matches reference
+.process__grid {
+  display: grid;
+  gap: 1px;
+  background: $border;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  @include respond(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step {
+  background: $bg-card;
+  padding: 44px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step__number {
+  font-family: $font-display;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+  color: $accent;
+  opacity: 0.35;
+}
+
+.step__title {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.step__body {
+  font-size: 15px;
+  color: $text-muted;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.process__cta {
+  text-align: center;
+  margin-top: 44px;
+}

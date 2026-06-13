@@ -1,0 +1,125 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.nav {
+  display: none;
+
+  @include respond(lg) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+  }
+}
+
+// Collapsed state — small circle toggle
+.nav--collapsed {
+  @include respond(lg) {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $bg-surface;
+    border: 1px solid $border;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .nav__list {
+      display: none;
+    }
+  }
+}
+
+.nav__toggle {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-muted;
+  font-size: 12px;
+  padding: 0;
+
+  .nav--collapsed & {
+    display: flex;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 200ms ease;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.nav__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: $text-primary;
+  opacity: 0.2;
+  white-space: nowrap;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.7);
+  background: rgba(26, 24, 20, 0.70);
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: opacity 150ms ease;
+
+  .nav__item:hover &,
+  .nav__item--active & {
+    opacity: 1;
+  }
+}
+
+// Pip — animates to pill on active
+.nav__pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $text-muted;
+  flex-shrink: 0;
+  transition: width 200ms ease, background 200ms ease, border-radius 200ms ease;
+
+  .nav__item--active & {
+    width: 18px;
+    border-radius: 3px;
+    background: $accent;
+  }
+}
