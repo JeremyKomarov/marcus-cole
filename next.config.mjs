@@ -11,7 +11,7 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          { key: 'X-Frame-Options',           value: 'DENY' },
+          { key: 'X-Frame-Options',           value: 'SAMEORIGIN' },
           { key: 'X-Content-Type-Options',    value: 'nosniff' },
           { key: 'X-XSS-Protection',          value: '1; mode=block' },
           { key: 'Referrer-Policy',           value: 'strict-origin-when-cross-origin' },
@@ -25,7 +25,7 @@ const nextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https://images.unsplash.com",
               "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
-              "frame-ancestors 'none'",
+              "frame-ancestors 'self'",
             ].join('; '),
           },
         ],
