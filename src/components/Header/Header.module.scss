@@ -7,14 +7,15 @@
   left: 0;
   right: 0;
   z-index: 100;
-  height: $nav-height;
+  min-height: $nav-height;
   display: flex;
-  align-items: center;
-  transition: background 300ms ease, border-color 300ms ease;
-  border-bottom: 1px solid transparent;
+  flex-direction: column;
+  background: rgba(26, 24, 20, calc(var(--scroll-p, 0) * 0.92));
+  backdrop-filter: blur(calc(var(--scroll-p, 0) * 20px));
+  border-bottom: 1px solid rgba(201, 169, 110, calc(var(--scroll-p, 0) * 0.12));
 
-  &--scrolled {
-    background: rgba(26, 24, 20, 0.92);
+  &--open {
+    background: rgba(26, 24, 20, 0.97);
     backdrop-filter: blur(20px);
     border-color: $border;
   }
@@ -25,6 +26,8 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  height: $nav-height;
+  flex-shrink: 0;
 }
 
 .header__logo {
@@ -84,4 +87,81 @@
   @include respond(lg) {
     display: block;
   }
+}
+
+// Hamburger — mobile only
+.header__burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  @include respond(lg) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    height: 1.5px;
+    background: $text-primary;
+    border-radius: 2px;
+    transition: transform 220ms ease, opacity 220ms ease, width 220ms ease;
+    transform-origin: center;
+  }
+
+  &--open {
+    span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+}
+
+// Mobile nav dropdown
+.header__mobile_nav {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 24px;
+  gap: 4px;
+
+  @include respond(lg) {
+    display: none;
+  }
+}
+
+.header__mobile_link {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid $border;
+  transition: color 150ms ease;
+
+  &:hover { color: $text-primary; }
+}
+
+.header__mobile_cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 14px 28px;
+  background: $accent;
+  color: #0e0c09;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 2px;
+  transition: opacity 150ms ease;
+
+  &:hover { opacity: 0.88; }
 }
