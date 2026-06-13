@@ -6,6 +6,7 @@ import ArrayEditor from "./ArrayEditor";
 import HrefField from "./HrefField";
 import LeadsTab from "./LeadsTab";
 import VisitorsTab from "./VisitorsTab";
+import SitesTab from "./SitesTab";
 
 function setNestedValue(obj, path, value) {
   const segments = path.replace(/\[(\d+)\]/g, ".$1").split(".");
@@ -58,7 +59,7 @@ function Section({ label, id, open, onToggle, visible, onToggleVisible, children
   );
 }
 
-export default function Editor({ hasGoogleReviews }) {
+export default function Editor({ hasGoogleReviews, role }) {
   const [content, setContent]   = useState(null);
   const [saved, setSaved]       = useState(null);
   const [dirty, setDirty]       = useState(false);
@@ -247,7 +248,12 @@ export default function Editor({ hasGoogleReviews }) {
 
         {/* Tab bar */}
         <div className="admin-tabs">
-          {[["content", "Content"], ["leads", "Leads"], ["visitors", "Visitors"]].map(([id, label]) => (
+          {[
+            ["content", "Content"],
+            ["leads", "Leads"],
+            ["visitors", "Visitors"],
+            ...(role === "dreamrise_dev" ? [["sites", "All Sites"]] : []),
+          ].map(([id, label]) => (
             <button key={id} className={`admin-tab${activeTab === id ? " admin-tab--active" : ""}`} onClick={() => setActiveTab(id)}>
               {label}
             </button>
@@ -594,6 +600,13 @@ export default function Editor({ hasGoogleReviews }) {
         <div style={{ display: activeTab === "visitors" ? "block" : "none" }}>
           <VisitorsTab />
         </div>
+
+        {/* Sites tab — dreamrise_dev only */}
+        {role === "dreamrise_dev" && (
+          <div style={{ display: activeTab === "sites" ? "block" : "none" }}>
+            <SitesTab />
+          </div>
+        )}
 
       </div>
 

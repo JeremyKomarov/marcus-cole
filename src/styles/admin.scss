@@ -1006,3 +1006,69 @@ $shadow-lg:   0 8px 32px rgba(0,0,0,0.14);
 }
 
 .vt-page-info { font-size: 11px; color: $ink-muted; min-width: 40px; text-align: center; }
+
+// ── SITES TAB (dreamrise_dev only) ───────────────────────────────────
+.sites-tab {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.sites-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid $border;
+    vertical-align: top;
+  }
+
+  th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $gold;
+    background: $cream;
+    position: sticky;
+    top: 0;
+  }
+
+  tr:hover td { background: color.adjust($cream, $lightness: -1%); }
+
+  strong { display: block; font-weight: 600; color: $ink; margin-bottom: 2px; }
+
+  code {
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: $cream-2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: $ink-muted;
+  }
+
+  &__url {
+    display: block;
+    font-size: 11px;
+    color: $rose;
+    text-decoration: none;
+    margin-top: 2px;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.sites-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: color.adjust($gold, $lightness: 38%);
+  color: color.adjust($gold, $lightness: -15%);
+
+  &--pro { background: color.adjust($rose, $lightness: 28%); color: $rose; }
+}

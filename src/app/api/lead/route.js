@@ -67,7 +67,9 @@ export async function POST(req) {
 
 async function saveMongo(lead) {
   const db = await getDb();
-  await db.collection('leads').insertOne({ ...lead, project: 'marcus-cole' });
+  const slug = process.env.NEXT_PUBLIC_PROJECT_SLUG || 'marcus-cole';
+  const site = await db.collection('websites').findOne({ slug }, { projection: { _id: 1 } });
+  await db.collection('leads').insertOne({ ...lead, project: slug, websiteId: site?._id ?? null });
 }
 
 async function sendEmail(lead) {
