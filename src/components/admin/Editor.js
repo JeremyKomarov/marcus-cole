@@ -49,7 +49,14 @@ function Section({ label, id, open, onToggle, visible, onToggleVisible, children
           <span className="admin-section__chevron">▼</span>
         </button>
         {onToggleVisible && (
-          <button type="button" className={`admin-section__eye${hidden ? " admin-section__eye--off" : ""}`} onClick={onToggleVisible} title={hidden ? "Show section" : "Hide section"}>
+          <button
+            type="button"
+            className={`admin-section__eye${hidden ? " admin-section__eye--off" : ""}`}
+            onClick={onToggleVisible}
+            title={hidden ? "Hidden on site — click to show" : "Shown on site — click to hide"}
+            aria-label={hidden ? `Show ${label} on site` : `Hide ${label} on site`}
+            aria-pressed={!hidden}
+          >
             <EyeIcon off={hidden} />
           </button>
         )}

@@ -37,6 +37,7 @@ export async function GET() {
     body:    String(r.text ?? '').slice(0, 2000),
     name:    String(r.author_name ?? '').slice(0, 200),
     context: String(r.relative_time_description ?? '').slice(0, 100),
+    initial: r.author_name?.[0]?.toUpperCase() ?? '?',
   }));
 
   return Response.json(reviews);
