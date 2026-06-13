@@ -1,8 +1,11 @@
+'use client';
 import { VALUE_PROPS, SITE } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './ValueProps.module.scss';
 
 export default function ValueProps() {
-  const { sectionLabel, headline, copy, cta, pillars } = VALUE_PROPS;
+  const { sectionLabel, headline, copy, cta, pillars } = useDraft('VALUE_PROPS', VALUE_PROPS);
+  const site = useDraft('SITE', SITE);
 
   return (
     <section id="value-props" className={styles.vp}>
@@ -17,7 +20,7 @@ export default function ValueProps() {
           <div className={`${styles.vp__copy} reveal`}>
             <h3 className={styles.vp__subhead}>Local knowledge. Direct access. Results that show.</h3>
             <p className={styles.vp__body}>{copy}</p>
-            <a href={SITE.phoneHref} className="btn btn--primary">{cta}</a>
+            <a href={site.phoneHref} className="btn btn--primary">{cta}</a>
           </div>
 
           <div className={`${styles.pillars} reveal`} style={{ transitionDelay: '100ms' }}>

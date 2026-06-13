@@ -539,6 +539,12 @@ $shadow-lg:   0 8px 32px rgba(0,0,0,0.14);
     }
   }
 
+  &--no-preview {
+    grid-template-columns: 1fr;
+
+    .admin-split__preview { display: none; }
+  }
+
   &__sidebar {
     overflow-y: auto;
     min-width: 0;
@@ -657,6 +663,7 @@ $shadow-lg:   0 8px 32px rgba(0,0,0,0.14);
   background: $white;
   flex-shrink: 0;
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .admin-tab {

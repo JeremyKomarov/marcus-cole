@@ -1,8 +1,11 @@
+'use client';
 import { PROCESS, SITE } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './Process.module.scss';
 
 export default function Process() {
-  const { sectionLabel, headline, cta, steps } = PROCESS;
+  const { sectionLabel, headline, cta, steps } = useDraft('PROCESS', PROCESS);
+  const site = useDraft('SITE', SITE);
 
   return (
     <section id="process" className={styles.process}>
@@ -21,7 +24,7 @@ export default function Process() {
           ))}
         </div>
         <div className={styles.process__cta}>
-          <a href={SITE.phoneHref} className="btn btn--primary">{cta}</a>
+          <a href={site.phoneHref} className="btn btn--primary">{cta}</a>
         </div>
       </div>
     </section>

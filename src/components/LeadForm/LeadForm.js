@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { LEAD_FORM, SITE } from '@/constants/site';
+import { LEAD_FORM } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './LeadForm.module.scss';
 
 export default function LeadForm() {
-  const { sectionLabel, headline, body, trustPoints, submitCta, successMessage } = LEAD_FORM;
+  const { sectionLabel, headline, body, trustPoints, submitCta, successMessage } = useDraft('LEAD_FORM', LEAD_FORM);
 
   const [form, setForm] = useState({ name: '', phone: '', email: '', intent: 'sell', hp: '' });
   const [status, setStatus] = useState('idle');

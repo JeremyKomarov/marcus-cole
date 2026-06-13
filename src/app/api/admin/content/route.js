@@ -8,7 +8,7 @@ const GH_API = 'https://api.github.com';
 
 const ALLOWED_KEYS = new Set([
   'SITE', 'HERO', 'STATS', 'LISTINGS', 'VALUE_PROPS',
-  'REVIEWS', 'ABOUT', 'MARKET', 'PROCESS', 'LEAD_FORM', 'FAQ', 'FOOTER',
+  'REVIEWS', 'ABOUT', 'MARKET', 'PROCESS', 'LEAD_FORM', 'FAQ', 'FOOTER', 'SECTIONS',
 ]);
 
 const URL_KEYS = new Set([

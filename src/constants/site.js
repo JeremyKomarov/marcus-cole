@@ -14,3 +14,4 @@ export const PROCESS     = Object.freeze(content.PROCESS);
 export const LEAD_FORM   = Object.freeze(content.LEAD_FORM);
 export const FAQ         = Object.freeze(content.FAQ);
 export const FOOTER      = Object.freeze(content.FOOTER);
+export const SECTIONS    = Object.freeze(content.SECTIONS);

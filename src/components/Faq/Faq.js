@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FAQ } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './Faq.module.scss';
 
 function FaqItem({ item, open, onToggle }) {
@@ -20,7 +21,7 @@ function FaqItem({ item, open, onToggle }) {
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
-  const { sectionLabel, headline, items } = FAQ;
+  const { sectionLabel, headline, items } = useDraft('FAQ', FAQ);
 
   return (
     <section id="faq" className={styles.faq}>

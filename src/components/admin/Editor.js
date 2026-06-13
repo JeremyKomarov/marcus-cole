@@ -52,7 +52,7 @@ function Section({ label, id, open, onToggle, visible, onToggleVisible, children
           <button
             type="button"
             className={`admin-section__eye${hidden ? " admin-section__eye--off" : ""}`}
-            onClick={onToggleVisible}
+            onClick={() => onToggleVisible(hidden)}
             title={hidden ? "Hidden on site — click to show" : "Shown on site — click to hide"}
             aria-label={hidden ? `Show ${label} on site` : `Hide ${label} on site`}
             aria-pressed={!hidden}
@@ -79,6 +79,16 @@ export default function Editor({ hasGoogleReviews, role }) {
   const [syncingReviews, setSyncingReviews] = useState(false);
   const iframeRef = useRef(null);
 
+  function writeDraft(data) {
+    try { localStorage.setItem('__preview_draft', JSON.stringify(data)); } catch {}
+    try {
+      iframeRef.current?.contentWindow?.postMessage(
+        { type: '__preview_draft', data },
+        window.location.origin,
+      );
+    } catch {}
+  }
+
   useEffect(() => {
     fetch("/api/admin/content")
       .then((r) => r.json())
@@ -88,7 +98,12 @@ export default function Editor({ hasGoogleReviews, role }) {
   useEffect(() => {
     if (!content) return;
     setDirty(JSON.stringify(content) !== saved);
+    writeDraft(content);
   }, [content, saved]);
+
+  // Re-send draft when switching back to Content tab (browsers may throttle hidden iframes).
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { if (activeTab === 'content' && content) writeDraft(content); }, [activeTab]);
 
   useEffect(() => {
     function onKey(e) {
@@ -230,10 +245,10 @@ export default function Editor({ hasGoogleReviews, role }) {
 
   if (!content) return <div className="admin-loading">Loading…</div>;
 
-  const { SITE, HERO, STATS, LISTINGS, VALUE_PROPS, REVIEWS, ABOUT, MARKET, PROCESS, LEAD_FORM, FAQ, FOOTER } = content;
+  const { SITE, HERO, STATS, LISTINGS, VALUE_PROPS, REVIEWS, ABOUT, MARKET, PROCESS, LEAD_FORM, FAQ, FOOTER, SECTIONS } = content;
 
   return (
-    <div className={`admin-split${sidebarOpen ? "" : " admin-split--collapsed"}`}>
+    <div className={`admin-split${sidebarOpen ? "" : " admin-split--collapsed"}${activeTab !== "content" ? " admin-split--no-preview" : ""}`}>
 
       {/* ── SIDEBAR ── */}
       <div className="admin-split__sidebar">
@@ -319,7 +334,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* Featured Listings */}
-          <Section label="Featured Listings" id="listings" open={openSection === "listings"} onToggle={() => toggleSection("listings")}>
+          <Section label="Featured Listings" id="listings" open={openSection === "listings"} onToggle={() => toggleSection("listings")} visible={SECTIONS?.listings} onToggleVisible={(v) => change("SECTIONS.listings", v)}>
             <ArrayEditor
               items={LISTINGS}
               onAdd={() => arrAdd("LISTINGS", { price: "", address: "", cityState: "Austin, TX", beds: 3, baths: "2", sqft: "", status: "Active" })}
@@ -345,7 +360,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* Why Marcus Cole */}
-          <Section label="Why Marcus Cole" id="value-props" open={openSection === "value-props"} onToggle={() => toggleSection("value-props")}>
+          <Section label="Why Marcus Cole" id="value-props" open={openSection === "value-props"} onToggle={() => toggleSection("value-props")} visible={SECTIONS?.valueProp} onToggleVisible={(v) => change("SECTIONS.valueProp", v)}>
             <FieldRow label="Section Label" value={VALUE_PROPS.sectionLabel} onChange={(v) => change("VALUE_PROPS.sectionLabel", v)} />
             <FieldRow label="Headline" value={VALUE_PROPS.headline} onChange={(v) => change("VALUE_PROPS.headline", v)} />
             <FieldRow label="Body Copy" value={VALUE_PROPS.copy} onChange={(v) => change("VALUE_PROPS.copy", v)} type="textarea" rows={4} />
@@ -368,7 +383,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* Client Reviews */}
-          <Section label="Client Reviews" id="reviews" open={openSection === "reviews"} onToggle={() => toggleSection("reviews")}>
+          <Section label="Client Reviews" id="reviews" open={openSection === "reviews"} onToggle={() => toggleSection("reviews")} visible={SECTIONS?.reviews} onToggleVisible={(v) => change("SECTIONS.reviews", v)}>
             {hasGoogleReviews && (
               <div className="admin-sync-bar">
                 <div className="admin-sync-bar__info">
@@ -437,7 +452,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* Market Stats */}
-          <Section label="Market Stats" id="market" open={openSection === "market"} onToggle={() => toggleSection("market")}>
+          <Section label="Market Stats" id="market" open={openSection === "market"} onToggle={() => toggleSection("market")} visible={SECTIONS?.market} onToggleVisible={(v) => change("SECTIONS.market", v)}>
             <FieldRow label="Section Label" value={MARKET.sectionLabel} onChange={(v) => change("MARKET.sectionLabel", v)} hint="Include the month/year, e.g. Austin Market · June 2026" />
             <FieldRow label="Headline" value={MARKET.headline} onChange={(v) => change("MARKET.headline", v)} />
             <FieldRow label="Data Source Note" value={MARKET.sub} onChange={(v) => change("MARKET.sub", v)} />
@@ -459,7 +474,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* Process */}
-          <Section label="The Process" id="process" open={openSection === "process"} onToggle={() => toggleSection("process")}>
+          <Section label="The Process" id="process" open={openSection === "process"} onToggle={() => toggleSection("process")} visible={SECTIONS?.process} onToggleVisible={(v) => change("SECTIONS.process", v)}>
             <FieldRow label="Section Label" value={PROCESS.sectionLabel} onChange={(v) => change("PROCESS.sectionLabel", v)} />
             <FieldRow label="Headline" value={PROCESS.headline} onChange={(v) => change("PROCESS.headline", v)} />
             <FieldRow label="CTA Text" value={PROCESS.cta} onChange={(v) => change("PROCESS.cta", v)} />
@@ -522,7 +537,7 @@ export default function Editor({ hasGoogleReviews, role }) {
           </Section>
 
           {/* FAQ */}
-          <Section label="FAQ" id="faq" open={openSection === "faq"} onToggle={() => toggleSection("faq")}>
+          <Section label="FAQ" id="faq" open={openSection === "faq"} onToggle={() => toggleSection("faq")} visible={SECTIONS?.faq} onToggleVisible={(v) => change("SECTIONS.faq", v)}>
             <FieldRow label="Section Label" value={FAQ.sectionLabel} onChange={(v) => change("FAQ.sectionLabel", v)} />
             <FieldRow label="Headline" value={FAQ.headline} onChange={(v) => change("FAQ.headline", v)} />
             <p className="admin-section__group-label">Questions</p>

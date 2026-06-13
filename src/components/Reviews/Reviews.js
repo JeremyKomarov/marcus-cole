@@ -1,4 +1,6 @@
+'use client';
 import { REVIEWS } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './Reviews.module.scss';
 
 function ReviewCard({ review }) {
@@ -15,6 +17,8 @@ function ReviewCard({ review }) {
 }
 
 export default function Reviews() {
+  const reviews = useDraft('REVIEWS', REVIEWS);
+
   return (
     <section id="reviews" className={styles.reviews}>
       <div className={styles.reviews__container}>
@@ -24,7 +28,7 @@ export default function Reviews() {
           <p className={styles.reviews__note}>Reviews sourced from Google.</p>
         </div>
         <div className={styles.reviews__grid}>
-          {REVIEWS.map((r, i) => (
+          {reviews.map((r, i) => (
             <div key={r.name} className="reveal" style={{ transitionDelay: `${i * 80}ms` }}>
               <ReviewCard review={r} />
             </div>

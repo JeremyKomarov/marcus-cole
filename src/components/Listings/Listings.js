@@ -1,4 +1,6 @@
+'use client';
 import { LISTINGS } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './Listings.module.scss';
 
 function ListingCard({ listing }) {
@@ -21,6 +23,8 @@ function ListingCard({ listing }) {
 }
 
 export default function Listings() {
+  const listings = useDraft('LISTINGS', LISTINGS);
+
   return (
     <section id="listings" className={styles.listings}>
       <div className={styles.listings__container}>
@@ -30,7 +34,7 @@ export default function Listings() {
           <p className={styles.listings__sub}>A curated selection of active Austin properties. Contact Marcus for private showings or off-market access.</p>
         </div>
         <div className={styles.listings__grid}>
-          {LISTINGS.map((l, i) => (
+          {listings.map((l, i) => (
             <div key={l.address} className="reveal" style={{ transitionDelay: `${i * 80}ms` }}>
               <ListingCard listing={l} />
             </div>

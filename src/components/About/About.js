@@ -1,8 +1,11 @@
+'use client';
 import { ABOUT, SITE } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './About.module.scss';
 
 export default function About() {
-  const { sectionLabel, headline, body, cta, credentials } = ABOUT;
+  const { sectionLabel, headline, body, cta, credentials } = useDraft('ABOUT', ABOUT);
+  const site = useDraft('SITE', SITE);
 
   return (
     <section id="about" className={styles.about}>
@@ -20,7 +23,7 @@ export default function About() {
                 <div key={c} className={styles.about__cred}>{c}</div>
               ))}
             </div>
-            <a href={SITE.phoneHref} className="btn btn--primary">{cta}</a>
+            <a href={site.phoneHref} className="btn btn--primary">{cta}</a>
           </div>
         </div>
       </div>

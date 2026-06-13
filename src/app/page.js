@@ -1,3 +1,5 @@
+import { ContentProvider } from '@/contexts/ContentContext';
+import SectionGate from '@/components/SectionGate/SectionGate';
 import JsonLd from '@/components/JsonLd/JsonLd';
 import SessionTracker from '@/components/SessionTracker/SessionTracker';
 import Header from '@/components/Header/Header';
@@ -17,25 +19,25 @@ import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
 
 export default function Home() {
   return (
-    <>
+    <ContentProvider>
       <JsonLd />
       <SessionTracker />
       <Header />
       <main>
         <Hero />
-        <Listings />
-        <ValueProps />
-        <Reviews />
+        <SectionGate section="listings"><Listings /></SectionGate>
+        <SectionGate section="valueProp"><ValueProps /></SectionGate>
+        <SectionGate section="reviews"><Reviews /></SectionGate>
         <About />
-        <Market />
-        <Process />
+        <SectionGate section="market"><Market /></SectionGate>
+        <SectionGate section="process"><Process /></SectionGate>
         <LeadForm />
-        <Faq />
+        <SectionGate section="faq"><Faq /></SectionGate>
       </main>
       <Footer />
       <SectionNav />
       <MobileCtaBar />
       <ScrollReveal />
-    </>
+    </ContentProvider>
   );
 }

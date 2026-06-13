@@ -1,10 +1,14 @@
+'use client';
 import { SITE } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './MobileCtaBar.module.scss';
 
 export default function MobileCtaBar() {
+  const site = useDraft('SITE', SITE);
+
   return (
     <div className={styles.bar}>
-      <a href={SITE.phoneHref} className={`${styles.bar__btn} ${styles['bar__btn--ghost']}`}>
+      <a href={site.phoneHref} className={`${styles.bar__btn} ${styles['bar__btn--ghost']}`}>
         Call Now
       </a>
       <a href="#lead-form" className={`${styles.bar__btn} ${styles['bar__btn--primary']}`}>

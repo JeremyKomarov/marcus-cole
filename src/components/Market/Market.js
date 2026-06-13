@@ -1,8 +1,10 @@
+'use client';
 import { MARKET } from '@/constants/site';
+import { useDraft } from '@/contexts/ContentContext';
 import styles from './Market.module.scss';
 
 export default function Market() {
-  const { sectionLabel, headline, sub, stats } = MARKET;
+  const { sectionLabel, headline, sub, stats } = useDraft('MARKET', MARKET);
 
   return (
     <section id="market" className={styles.market}>
